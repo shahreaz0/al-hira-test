@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8008:8008"
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - LOG_LEVEL=${LOG_LEVEL}
+    volumes:
+      - .:/app
+    restart: unless-stopped
+    # command: "pnpm start"
